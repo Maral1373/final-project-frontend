@@ -45,7 +45,6 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <SignUp />
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -98,6 +97,7 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
+        <SignUp />
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
