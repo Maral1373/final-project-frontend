@@ -14,7 +14,7 @@ import Container from "@mui/material/Container";
 import Copyright from "../../components/CopyRight/CopyRight";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SignUp from "../sign-up/SignUp";
-
+import AppBar from "../../components/AppBar/AppBar";
 const theme = createTheme();
 
 export default function SignIn() {
@@ -29,6 +29,7 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
+      <AppBar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
