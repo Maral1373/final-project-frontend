@@ -17,7 +17,7 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 const pages = [
   {
     title: "Home",
-    link: "./home",
+    link: "./",
   },
   {
     title: "Shop",
@@ -41,6 +41,7 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -71,7 +72,7 @@ function ResponsiveAppBar() {
               fontFamily: "inherit",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "#EAC7C7",
               textDecoration: "none",
             }}
           >
@@ -129,18 +130,23 @@ function ResponsiveAppBar() {
               fontFamily: "inherit",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "#EAC7C7",
               textDecoration: "none",
             }}
           >
             PAGE NAME
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} />
+          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page.title}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "#EAC7C7",
+                  display: "block",
+                }}
               >
                 {page.title}
               </Button>
