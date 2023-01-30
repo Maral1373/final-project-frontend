@@ -79,6 +79,8 @@ function ResponsiveAppBar() {
             PAGE NAME
           </Typography>
 
+          {/* menu phone */}
+
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -137,7 +139,7 @@ function ResponsiveAppBar() {
             PAGE NAME
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} />
-          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 0.1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page.title}
