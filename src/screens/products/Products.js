@@ -1,13 +1,11 @@
 import * as React from "react";
 import AppBar from "../../components/AppBar/AppBar";
-// import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-// import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -24,7 +22,6 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme();
-
 export default function Products() {
   return (
     <ThemeProvider theme={theme}>
@@ -34,21 +31,12 @@ export default function Products() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: "background.paper",
-            pt: 8,
+            bgcolor: "background.paper", //white
             pb: 6,
+            pt: 4,
           }}
         >
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Album layout
-            </Typography>
+          <Container maxWidth="100vw">
             <Typography
               variant="h5"
               align="center"
@@ -56,10 +44,8 @@ export default function Products() {
               paragraph
             >
               <CardMedia
-                maxWidth="4000"
-                maxHeight="500"
                 component="img"
-                sx={{ pt: 4 }}
+                sx={{ pt: 4, maxWidth: "100vw" }}
                 image="https://source.unsplash.com/random"
                 alt="random"
               />
@@ -144,33 +130,43 @@ export default function Products() {
             </Grid>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ my: 0 }} maxWidth="xl">
           {/* End hero unit */}
-          <Grid container spacing={4}>
+          <Grid container spacing={2}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card
                   sx={{
+                    maxWidth: 345,
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
+                    breakpoints: {
+                      values: {
+                        xs: 0,
+                        sm: 600,
+                        lg: 1200,
+                        xl: 1536,
+                      },
+                    },
                   }}
                 >
                   <CardMedia
+                    maxWidth="sm"
                     component="img"
                     sx={{
-                      // 16:9
-                      pt: "56.25%",
+                      px: 3,
+                      py: 3,
                     }}
                     image="https://source.unsplash.com/random"
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      Product name
                     </Typography>
                     <Typography>about product</Typography>
-                    <Typography>$80</Typography>
+                    <Typography>$price</Typography>
                   </CardContent>
                   <CardActions>
                     <IconButton size="large" aria-label="add to shopping cart">
