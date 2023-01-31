@@ -11,10 +11,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Copyright from "../../components/CopyRight/CopyRight";
-import Avatar from "@mui/material/Avatar";
-import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
-import CategoryIcon from "@mui/icons-material/Category";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import IconButton from "@mui/material/IconButton";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -32,104 +28,10 @@ export default function Products() {
         <Box
           sx={{
             bgcolor: "background.paper", //white
-            pb: 6,
+            pb: 8,
             pt: 4,
           }}
-        >
-          <Container maxWidth="100vw">
-            <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
-              paragraph
-            >
-              <CardMedia
-                component="img"
-                sx={{ pt: 4, maxWidth: "100vw" }}
-                image="https://source.unsplash.com/random"
-                alt="random"
-              />
-            </Typography>
-            <Grid
-              item
-              xs={12}
-              sm={10}
-              md={4}
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Avatar
-                sx={{
-                  bgcolor: "#EAC7C7",
-                  marginBottom: "5",
-                  height: "100px",
-                  width: "100px",
-                  display: "flex",
-                  flexDirection: "column",
-                  margin: "auto",
-                }}
-                item
-                xs={4}
-              >
-                <LocalShippingOutlinedIcon fontSize="large" />
-              </Avatar>
-              <Box
-                color={"orange"}
-                item
-                xs={4}
-                marginBottom={5}
-                textAlign={"center"}
-              >
-                Free shipping up to $50
-              </Box>
-              <Avatar
-                sx={{
-                  bgcolor: "#A0C3D2",
-                  marginBottom: "5",
-                  height: "100px",
-                  width: "100px",
-                  display: "flex",
-                  flexDirection: "column",
-                  margin: "auto",
-                }}
-                item
-                xs={4}
-              >
-                <CategoryIcon fontSize="large" />
-              </Avatar>
-
-              <Box
-                color={"red"}
-                item
-                xs={4}
-                marginBottom={5}
-                textAlign={"center"}
-              >
-                Product well package
-              </Box>
-              <Avatar
-                sx={{
-                  bgcolor: "#EAC7C7",
-                  marginBottom: "5",
-                  height: "100px",
-                  width: "100px",
-                  display: "flex",
-                  flexDirection: "column",
-                  margin: "auto",
-                }}
-                item
-                xs={4}
-              >
-                <SupportAgentIcon fontSize="large" />
-              </Avatar>
-              <Box item xs={12} textAlign={"center"}>
-                Support
-              </Box>
-            </Grid>
-          </Container>
-        </Box>
+        ></Box>
         <Container sx={{ my: 0 }} maxWidth="xl">
           {/* End hero unit */}
           <Grid container spacing={2}>
@@ -161,7 +63,7 @@ export default function Products() {
                     image="https://source.unsplash.com/random"
                     alt="random"
                   />
-                  <CardContent sx={{ flexGrow: 1, cursor: 'pointer' }}>
+                  <CardContent sx={{ flexGrow: 1, cursor: "pointer" }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Product name
                     </Typography>
@@ -172,9 +74,18 @@ export default function Products() {
                     <IconButton size="large" aria-label="add to shopping cart">
                       <AddShoppingCartIcon />
                     </IconButton>
-                    <IconButton variant="plain" color="danger">
-                      <FavoriteBorder />
-                    </IconButton>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        gap: 2,
+                        flexWrap: "wrap",
+                        alignItems: "center",
+                      }}
+                    >
+                      <IconButton variant="solid">
+                        <FavoriteBorder />
+                      </IconButton>
+                    </Box>
                   </CardActions>
                 </Card>
               </Grid>

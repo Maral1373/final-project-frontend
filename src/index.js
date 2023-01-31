@@ -7,6 +7,7 @@ import Admin from "./screens/admin-dashboard/Dashboard";
 import Products from "./screens/products/Products";
 import Checkout from "./screens/checkout/Checkout";
 import Signin from "./screens/sign-in/SignIn";
+import Wishproducts from "./screens/wish-products/Wishproducts";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -23,6 +24,7 @@ root.render(
         <Route path="/admin" element={<Admin />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/wishproducts" element={<Wishproducts />} />
       </Routes>
     </Router>
   </ThemeProvider>
