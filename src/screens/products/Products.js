@@ -149,6 +149,10 @@ export default function Products() {
                         xl: 1536,
                       },
                     },
+                    cursor: "pointer",
+                    "&:hover": {
+                      backgroundColor: " #F7F5EB",
+                    },
                   }}
                 >
                   <CardMedia
@@ -157,11 +161,20 @@ export default function Products() {
                     sx={{
                       px: 3,
                       py: 3,
+                      "&:hover": {
+                        width: "105%",
+                        height: "102%",
+                        transformOrigin: { horizontal: "center" },
+                      },
                     }}
                     image="https://source.unsplash.com/random"
                     alt="random"
                   />
-                  <CardContent sx={{ flexGrow: 1, cursor: 'pointer' }}>
+                  <CardContent
+                    sx={{
+                      flexGrow: 1,
+                    }}
+                  >
                     <Typography gutterBottom variant="h5" component="h2">
                       Product name
                     </Typography>
