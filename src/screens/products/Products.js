@@ -162,7 +162,7 @@ export default function Products() {
                       px: 3,
                       py: 3,
                       "&:hover": {
-                        width: "105%",
+                        width: "101%",
                         height: "102%",
                         transformOrigin: { horizontal: "center" },
                       },

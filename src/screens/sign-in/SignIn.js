@@ -13,7 +13,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Copyright from "../../components/CopyRight/CopyRight";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import SignUp from "../sign-up/SignUp";
 import AppBar from "../../components/AppBar/AppBar";
 const theme = createTheme();
 
@@ -86,19 +85,18 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="#" underline="hover" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" underline="hover" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <SignUp />
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
