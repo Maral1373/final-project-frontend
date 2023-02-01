@@ -21,7 +21,27 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#A0C3D2",
+    },
+  },
+  backgroundColor: "#e8eaf6",
+  secondary: {
+    main: "#EAC7C7",
+  },
+  typography: {
+    fontFamily: `"Indie Flower", cursive`,
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    poster: {
+      color: "red",
+    },
+  },
+});
 export default function Products() {
   return (
     <ThemeProvider theme={theme}>
@@ -31,7 +51,7 @@ export default function Products() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: "background.paper", //white
+            bgcolor: "background.paper",
             pb: 6,
             pt: 4,
           }}
@@ -75,13 +95,7 @@ export default function Products() {
               >
                 <LocalShippingOutlinedIcon fontSize="large" />
               </Avatar>
-              <Box
-                color={"orange"}
-                item
-                xs={4}
-                marginBottom={5}
-                textAlign={"center"}
-              >
+              <Box item xs={4} marginBottom={5} textAlign={"center"}>
                 Free shipping up to $50
               </Box>
               <Avatar
@@ -100,13 +114,7 @@ export default function Products() {
                 <CategoryIcon fontSize="large" />
               </Avatar>
 
-              <Box
-                color={"red"}
-                item
-                xs={4}
-                marginBottom={5}
-                textAlign={"center"}
-              >
+              <Box item xs={4} marginBottom={5} textAlign={"center"}>
                 Product well package
               </Box>
               <Avatar
@@ -182,11 +190,26 @@ export default function Products() {
                     <Typography>$price</Typography>
                   </CardContent>
                   <CardActions>
-                    <IconButton size="large" aria-label="add to shopping cart">
-                      <AddShoppingCartIcon />
+                    <IconButton size="large" aria-label="add to shopping cart" sx={{"&:hover": {
+                            bgcolor: "#c8e6c9",
+                          },}}>
+                      <AddShoppingCartIcon sx={{
+                          cursor: "pointer",
+                          color: "#388e3c",
+                        }} />
                     </IconButton>
-                    <IconButton variant="plain" color="danger">
-                      <FavoriteBorder />
+                    <IconButton variant="plain" color="danger" sx={{"&:hover": {
+                            bgcolor: "#ffcdd2",
+                          },}}>
+                      <FavoriteBorder
+                        sx={{
+                          cursor: "pointer",
+                          color: "red",
+                          "&:hover": {
+                            borderColor: "purple",
+                          },
+                        }}
+                      />
                     </IconButton>
                   </CardActions>
                 </Card>
