@@ -11,9 +11,9 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Copyright from "../../components/CopyRight/CopyRight";
+import Copyright from "../../components/CopyRight";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AppBar from "../../components/AppBar/AppBar";
+import AppBar from "../../components/AppBar";
 const theme = createTheme();
 
 export default function SignIn() {

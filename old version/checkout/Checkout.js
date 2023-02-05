@@ -12,8 +12,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
-import Copyright from "../../components/CopyRight/CopyRight";
-import AppBar from "../../components/AppBar/AppBar";
+import Copyright from "../../components/CopyRight";
+import AppBar from "../../components/AppBar";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 

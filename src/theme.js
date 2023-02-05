@@ -1,25 +1,25 @@
-import { red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
-// A custom theme for this app
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#556cd6",
-    },
-    secondary: {
-      main: "#19857b",
-    },
-    error: {
-      main: red.A400,
+      main: "#A0C3D2",
     },
   },
+  backgroundColor: "#e8eaf6",
+  secondary: {
+    main: "#EAC7C7",
+  },
+  
   typography: {
     fontFamily: `"Indie Flower", cursive`,
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
+    poster: {
+      color: "red",
+    },
   },
 });
 

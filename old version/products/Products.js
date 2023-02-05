@@ -1,5 +1,5 @@
 import * as React from "react";
-import AppBar from "../../components/AppBar/AppBar";
+import AppBar from "../../components/AppBar";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Copyright from "../../components/CopyRight/CopyRight";
+import Copyright from "../../components/CopyRight";
 import Avatar from "@mui/material/Avatar";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import CategoryIcon from "@mui/icons-material/Category";
@@ -140,9 +140,9 @@ export default function Products() {
         </Box>
         <Container sx={{ my: 0 }} maxWidth="xl">
           {/* End hero unit */}
-          <Grid container spacing={2}>
+          <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={3}>
+              <Grid item key={card} xs={"auto"} sm={6} md={3}>
                 <Card
                   sx={{
                     maxWidth: 345,
@@ -152,7 +152,6 @@ export default function Products() {
                     breakpoints: {
                       values: {
                         xs: 0,
-                        sm: 600,
                         lg: 1200,
                         xl: 1536,
                       },
@@ -190,17 +189,31 @@ export default function Products() {
                     <Typography>$price</Typography>
                   </CardContent>
                   <CardActions>
-                    <IconButton size="large" aria-label="add to shopping cart" sx={{"&:hover": {
-                            bgcolor: "#c8e6c9",
-                          },}}>
-                      <AddShoppingCartIcon sx={{
+                    <IconButton
+                      size="large"
+                      aria-label="add to shopping cart"
+                      sx={{
+                        "&:hover": {
+                          bgcolor: "#c8e6c9",
+                        },
+                      }}
+                    >
+                      <AddShoppingCartIcon
+                        sx={{
                           cursor: "pointer",
                           color: "#388e3c",
-                        }} />
+                        }}
+                      />
                     </IconButton>
-                    <IconButton variant="plain" color="danger" sx={{"&:hover": {
-                            bgcolor: "#ffcdd2",
-                          },}}>
+                    <IconButton
+                      variant="plain"
+                      color="danger"
+                      sx={{
+                        "&:hover": {
+                          bgcolor: "#ffcdd2",
+                        },
+                      }}
+                    >
                       <FavoriteBorder
                         sx={{
                           cursor: "pointer",

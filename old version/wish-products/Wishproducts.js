@@ -1,5 +1,5 @@
 import * as React from "react";
-import AppBar from "../../components/AppBar/AppBar";
+import AppBar from "../../components/AppBar";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Copyright from "../../components/CopyRight/CopyRight";
+import Copyright from "../../components/CopyRight";
 import IconButton from "@mui/material/IconButton";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";

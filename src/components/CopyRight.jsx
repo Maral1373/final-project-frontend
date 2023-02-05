@@ -16,19 +16,19 @@ function Copyright() {
     //   }}
     //   component="footer"
     // >
-      <Typography
-        variant="body2"
-        color="text.secondary"
-        align="center"
-        component="p"
-      >
-        {"Copyright © "}
-        <Link color="inherit" href="#">
-          Website name
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      component="p"
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="#">
+        Website name
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
     // </Box>
   );
 }

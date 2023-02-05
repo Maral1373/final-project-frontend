@@ -1,34 +1,75 @@
-import * as React from "react";
-import { createRoot } from "react-dom/client";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme";
-import Admin from "./screens/admin-dashboard/Dashboard";
-import Products from "./screens/products/Products";
-import Checkout from "./screens/checkout/Checkout";
-import Signin from "./screens/sign-in/SignIn";
-import Signup from "./screens/sign-up/SignUp";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Wishproducts from "./screens/wish-products/Wishproducts";
+import reportWebVitals from "./reportWebVitals";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./screens/layout";
+import ErrorPage from "./screens/error-page";
+import Contact from "./screens/contact";
+import Products from "./screens/products";
+import About from "./screens/about";
+import Profile from "./screens/profile";
+import Orders from "./screens/orders";
+import Logout from "./screens/logout";
+import Login from "./screens/login";
+import Signup from "./screens/signup";
+import Forgot from "./screens/forgot";
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "products",
+        element: <Products />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "orders",
+        element: <Orders />,
+      },
+      {
+        path: "logout",
+        element: <Logout />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
+      },
+      {
+        path: "forgot",
+        element: <Forgot />,
+      },
+    ],
+  },
+]);
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThemeProvider theme={theme}>
-    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-    <CssBaseline />
-    <Router>
-      <Routes>
-        <Route path="/" element={<Products />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/wishproducts" element={<Wishproducts />} />
-      </Routes>
-    </Router>
-  </ThemeProvider>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
