@@ -21,7 +21,7 @@ const useStyles = styled((theme) => ({
     padding: "43px",
     fontSize: "72px",
     "&:hover": {
-      background: "#3f51b5",
+      background: "#FAF6F2",
       color: "white",
     },
   },
