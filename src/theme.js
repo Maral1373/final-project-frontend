@@ -10,20 +10,19 @@ const theme = createTheme({
   secondary: {
     main: "#DEEDF0",
   },
-  typography: {
-    fontFamily: `"EB Garamond", serif`,
-  },
   // typography: {
-  //   // fontFamily: `"Indie Flower", cursive`,
-  //   fontFamily: "serif",
-  //   fontSize: 14,
-  //   fontWeightLight: 300,
-  //   fontWeightRegular: 400,
-  //   fontWeightMedium: 500,
-  //   poster: {
-  //     color: "red",
-  //   },
+  //   fontFamily: `"EB Garamond", serif`,
   // },
+  typography: {
+    fontFamily: `"Open Sans", sons-serif`,
+    fontSize: 16,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    poster: {
+      color: "red",
+    },
+  },
 });
 
 export default theme;
