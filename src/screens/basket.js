@@ -67,7 +67,7 @@ export default function Basket() {
                   },
                   cursor: "pointer",
                   "&:hover": {
-                    backgroundColor: "#FFF",
+                    backgroundColor: "#DEEDF0",
                   },
                 }}
               >

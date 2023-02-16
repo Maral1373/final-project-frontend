@@ -18,7 +18,8 @@ import { useTheme } from "@mui/material";
 import api from "../api/api";
 import { styled } from "@mui/material/styles";
 import FiltersList from "../components/FilterList";
-import { Block } from "@mui/icons-material";
+import { Block, ControlPointDuplicateRounded } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Flex = styled("div")(({ theme }) => ({
   display: "flex",
@@ -38,6 +39,7 @@ const Right = styled("div")(({ theme }) => ({
 export default function Products() {
   const theme = useTheme();
   const [products, setProducts] = useState([]);
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
     fetchProducts();
@@ -52,6 +54,16 @@ export default function Products() {
     }
   };
 
+  const setFilter = (filterType, filterValue) => {
+    const newState = { ...filters };
+    newState[filterType] = filterValue;
+    setFilters(newState);
+  };
+
+  const clearFilters = () => setFilters({});
+
+  console.log("filters", filters);
+  console.log("products", products);
   return (
     <main>
       {/* Hero unit */}
@@ -208,14 +220,13 @@ export default function Products() {
       </Box>
       <Flex>
         <Left>
-          <FiltersList />
+          <FiltersList setFilter={setFilter} />
         </Left>
         <Right>
           <Container sx={{ my: 0 }} maxWidth="xl">
             {/* End hero unit */}
             <Grid container spacing={2}>
               {products.map((product) => {
-                console.log(product);
                 const {
                   photo,
                   name,
@@ -229,100 +240,105 @@ export default function Products() {
                 } = product.info;
                 return (
                   <Grid item key={product._id} xs={12} sm={6} md={3}>
-                    <Card
-                      sx={{
-                        maxWidth: 345,
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        breakpoints: {
-                          values: {
-                            xs: 0,
-                            sm: 600,
-                            lg: 1200,
-                            xl: 1536,
-                          },
-                        },
-                        cursor: "pointer",
-                        "&:hover": {
-                          backgroundColor: "#FFF",
-                        },
-                      }}
+                    <Link
+                      to={`/products/${product._id}`}
+                      style={{ textDecoration: "none" }}
                     >
-                      <CardMedia
-                        maxWidth="sm"
-                        component="img"
+                      <Card
                         sx={{
-                          px: 3,
-                          py: 3,
-                          "&:hover": {
-                            transition: "transform 0.15s ease-in-out",
-                            transform: "scale3d(1.05, 1.05, 1)",
+                          maxWidth: 345,
+                          height: "100%",
+                          display: "flex",
+                          flexDirection: "column",
+                          breakpoints: {
+                            values: {
+                              xs: 0,
+                              sm: 600,
+                              lg: 1200,
+                              xl: 1536,
+                            },
                           },
-                        }}
-                        image={photo}
-                      />
-                      <CardContent
-                        sx={{
-                          flexGrow: 1,
+                          cursor: "pointer",
+                          "&:hover": {
+                            backgroundColor: "#DEEDF0",
+                          },
                         }}
                       >
-                        <Typography
-                          gutterBottom
-                          variant="h5"
-                          fontWeight={"bold"}
-                          component="h2"
-                        >
-                          {name}
-                        </Typography>
-                        <Typography>{camera}</Typography>
-                        <Typography>
-                          {displaySize} ({displayResolution})
-                        </Typography>
-                        <Typography>{cpu}</Typography>
-                        <Typography>{ram} Ram</Typography>
-                        <Typography>{internalMemory} Storage</Typography>
-                        <Typography>{price}</Typography>
-                      </CardContent>
-                      <CardActions>
-                        <IconButton
-                          size="large"
-                          aria-label="add to shopping cart"
+                        <CardMedia
+                          maxWidth="sm"
+                          component="img"
                           sx={{
+                            px: 3,
+                            py: 3,
                             "&:hover": {
-                              bgcolor: "#FFF5EB",
+                              transition: "transform 0.15s ease-in-out",
+                              transform: "scale3d(1.05, 1.05, 1)",
                             },
                           }}
-                        >
-                          <AddShoppingCartIcon
-                            sx={{
-                              cursor: "pointer",
-                              color: "#d1936d",
-                            }}
-                          />
-                        </IconButton>
-                        <IconButton
-                          aria-label="add to favorites"
-                          // variant="plain"
-                          // color="danger"
+                          image={photo}
+                        />
+                        <CardContent
                           sx={{
-                            "&:hover": {
-                              bgcolor: "#FFF5EB",
-                            },
+                            flexGrow: 1,
                           }}
                         >
-                          <FavoriteIcon
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            fontWeight={"bold"}
+                            component="h2"
+                          >
+                            {name}
+                          </Typography>
+                          <Typography>{camera}</Typography>
+                          <Typography>
+                            {displaySize} ({displayResolution})
+                          </Typography>
+                          <Typography>{cpu}</Typography>
+                          <Typography>{ram} Ram</Typography>
+                          <Typography>{internalMemory} Storage</Typography>
+                          <Typography>{price}</Typography>
+                        </CardContent>
+                        <CardActions>
+                          <IconButton
+                            size="large"
+                            aria-label="add to shopping cart"
                             sx={{
-                              cursor: "pointer",
-                              color: "#ff8a80",
                               "&:hover": {
-                                borderColor: "purple",
+                                bgcolor: "#FFF5EB",
                               },
                             }}
-                          />
-                        </IconButton>
-                      </CardActions>
-                    </Card>
+                          >
+                            <AddShoppingCartIcon
+                              sx={{
+                                cursor: "pointer",
+                                color: "#d1936d",
+                              }}
+                            />
+                          </IconButton>
+                          <IconButton
+                            aria-label="add to favorites"
+                            // variant="plain"
+                            // color="danger"
+                            sx={{
+                              "&:hover": {
+                                bgcolor: "#FFF5EB",
+                              },
+                            }}
+                          >
+                            <FavoriteIcon
+                              sx={{
+                                cursor: "pointer",
+                                color: "#ff8a80",
+                                "&:hover": {
+                                  borderColor: "purple",
+                                },
+                              }}
+                            />
+                          </IconButton>
+                        </CardActions>
+                      </Card>
+                    </Link>
                   </Grid>
                 );
               })}
