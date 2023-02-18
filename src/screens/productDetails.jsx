@@ -9,9 +9,10 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useTheme } from "@mui/material";
-import api from "../api/api";
+import { fetchProduct, addToCart, addToFavorite } from "../api/api";
 import { useParams } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import Loading from "../components/Loading";
 
 const Flex = styled("div")(({ theme }) => ({
   display: "flex",
@@ -30,16 +31,18 @@ const Right = styled("div")(({ theme }) => ({
 
 export default function ProductDetails() {
   const theme = useTheme();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
   const { productId } = useParams();
 
   useEffect(() => {
-    fetchProduct();
+    initialize();
   }, []);
 
-  const fetchProduct = async () => {
+  const initialize = async () => {
+    if (!productId) return;
     try {
-      const response = await api.get(`/catalog/${productId}`);
+      const response = await fetchProduct(productId);
+      console.log("prod dts response", response);
       setProduct(response.data.info);
     } catch (e) {
       console.log(e);
@@ -49,7 +52,9 @@ export default function ProductDetails() {
   return (
     <main>
       <Container sx={{ my: 0 }} maxWidth="xl">
-        {product.name && (
+        {!product ? (
+          <Loading />
+        ) : (
           <Card>
             <Flex>
               <Left>
@@ -91,14 +96,15 @@ export default function ProductDetails() {
                     aria-label="add to shopping cart"
                     sx={{
                       "&:hover": {
-                        bgcolor: "#DED1BD",
+                        bgcolor: "#FFF5EB",
                       },
                     }}
+                    onClick={() => addToCart(product)}
                   >
                     <AddShoppingCartIcon
                       sx={{
                         cursor: "pointer",
-                        color: "#B08401",
+                        color: "#d1936d",
                       }}
                     />
                   </IconButton>
@@ -108,9 +114,10 @@ export default function ProductDetails() {
                     // color="danger"
                     sx={{
                       "&:hover": {
-                        bgcolor: "#DED1BD",
+                        bgcolor: "#FFF5EB",
                       },
                     }}
+                    onClick={() => addToFavorite(product)}
                   >
                     <FavoriteIcon
                       sx={{
