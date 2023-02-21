@@ -1,27 +1,61 @@
 import React, { useState } from "react";
 
+import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
 
-const CollapsibleListItem = ({ title, children }) => {
-  const [open, setOpen] = useState(true);
-  const handleClick = () => {
-    setOpen(!open);
+import ListItem from "@mui/material/ListItem";
+import Checkbox from "@mui/material/Checkbox";
+
+const CheckboxList = ({ name, options, onChange }) => {
+  const [checked, setChecked] = useState([]);
+
+  const handleToggle = (value) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+    onChange(name, newChecked);
   };
+
   return (
-    <>
-      <ListItemButton onClick={handleClick}>
-        <ListItemText primary={title} />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        {children}
-      </Collapse>
-    </>
+    <List
+      sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+      key={name}
+    >
+      {options.map(({ label, value }) => {
+        const labelId = `checkbox-list-label-${value}`;
+
+        return (
+          <ListItem key={value} disablePadding>
+            <ListItemButton
+              role={undefined}
+              onClick={handleToggle(value)}
+              dense
+            >
+              <ListItemIcon>
+                <Checkbox
+                  edge="start"
+                  checked={checked.indexOf(value) !== -1}
+                  tabIndex={-1}
+                  disableRipple
+                  inputProps={{ "aria-labelledby": labelId }}
+                />
+              </ListItemIcon>
+              <ListItemText id={labelId} primary={label} />
+            </ListItemButton>
+          </ListItem>
+        );
+      })}
+    </List>
   );
 };
 
-export default CollapsibleListItem;
+export default CheckboxList;
