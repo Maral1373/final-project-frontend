@@ -61,7 +61,6 @@ export const registerUser = async ({
   lastName,
   address,
   phone,
-  callback,
 }) => {
   try {
     const res = await http.post(`/auth/register`, {
@@ -75,7 +74,7 @@ export const registerUser = async ({
     });
     if (res.data.token) {
       setToken(res.data.token);
-      return callback();
+      return Promise.resolve();
     }
   } catch (e) {
     console.log(e);
@@ -121,5 +120,14 @@ export const getUser = async () => {
     return http.get(`/user`);
   } catch (e) {
     console.log(e);
+  }
+};
+
+export const editUser = async (data) => {
+  try {
+    return http.put(`/user`, data);
+  } catch (e) {
+    console.log(e);
+    throw e;
   }
 };
