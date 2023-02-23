@@ -21,6 +21,7 @@ import { SITE_NAME } from "../consts/consts";
 
 import { Link } from "react-router-dom";
 import { BasketIcon } from "./BasketIcon";
+import { useHref } from "react-router-dom";
 
 const pages = [
   {
@@ -90,10 +91,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function ResponsiveAppBar(props) {
+function ResponsiveAppBar({ searchQuery, setSearchQuery }) {
   const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const href = useHref();
+  const isOnProductsPage = href === "/" || href === "/products";
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -213,15 +216,19 @@ function ResponsiveAppBar(props) {
           >
             {SITE_NAME}
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          {isOnProductsPage && (
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                value={searchQuery}
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </Search>
+          )}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} />
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
