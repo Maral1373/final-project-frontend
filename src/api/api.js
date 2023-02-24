@@ -1,5 +1,5 @@
 import http from "./http";
-import { getToken, setToken } from "./token";
+import { getToken, setToken, setAdminToken, getAdminToken } from "./token";
 
 export const addToCart = async (product) => {
   const isLoggedIn = typeof getToken() === "string";
@@ -104,6 +104,28 @@ export const registerUser = async ({
   }
 };
 
+export const registerAdmin = async ({ email, password, key }) => {
+  try {
+    const res = await http.post(`/admin/auth/register`, {
+      username: email,
+      password,
+      email,
+      key,
+    });
+    if (res.data.token) {
+      setAdminToken(res.data.token);
+      return Promise.resolve();
+    } else {
+      setAdminToken(null);
+      throw new Error("No token received");
+    }
+  } catch (e) {
+    console.log(e);
+    setAdminToken(null);
+    throw e;
+  }
+};
+
 export const fetchProducts = async () => {
   try {
     return http.get(`/catalog`);
@@ -136,6 +158,26 @@ export const loginUser = async (email, password) => {
   }
 };
 
+export const loginAdmin = async (email, password) => {
+  try {
+    const res = await http.post(`/admin/auth/login`, {
+      email,
+      password,
+    });
+    console.log("admin login res", res);
+    if (res.data.token) {
+      setAdminToken(res.data.token);
+    } else {
+      setAdminToken(null);
+      throw new Error("No token received");
+    }
+    return res.data.token;
+  } catch (e) {
+    setAdminToken(null);
+    throw e;
+  }
+};
+
 export const getUser = async () => {
   try {
     return http.get(`/user`);
@@ -160,5 +202,29 @@ export const editUser = async (data) => {
   } catch (e) {
     console.log(e);
     throw e;
+  }
+};
+
+export const getOrders = async () => {
+  try {
+    return http.get(`/admin/orders`);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getUsers = async () => {
+  try {
+    return http.get(`/admin/users`);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const createProduct = async (params) => {
+  try {
+    return http.post(`/admin/products`, params);
+  } catch (e) {
+    console.log(e);
   }
 };
