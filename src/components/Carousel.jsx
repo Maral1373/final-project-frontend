@@ -4,14 +4,16 @@ import { Carousel } from "react-carousel-minimal";
 const CarouselComponent = () => {
   const data = [
     {
-      image:
-        "https://thumbs.dreamstime.com/b/smartphone-headphones-office-accessories-yellow-background-modern-lifestyle-business-flat-lay-banner-copy-space-176172776.jpg",
-      caption: "Text will come soon... 1",
+      image: "/img/background1.png",
+      caption: "",
     },
     {
-      image:
-        "https://thumbs.dreamstime.com/b/smartphone-office-accessories-yellow-background-modern-lifestyle-business-flat-lay-banner-copy-space-176172335.jpg",
-      caption: "Text will come soon... 2",
+      image: "/img/background4.jpg",
+      caption: "",
+    },
+    {
+      image: "/img/background2.jpg",
+      caption: "",
     },
   ];
 
@@ -26,7 +28,7 @@ const CarouselComponent = () => {
       width="100%"
       height="40vh"
       captionStyle={captionStyle}
-      radius="10px"
+      // radius="10px"
       captionPosition="bottom"
       automatic={true}
       dots={true}

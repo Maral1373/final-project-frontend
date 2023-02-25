@@ -13,24 +13,24 @@ export default function HeaderBoxes() {
         {
           avatar: <LocalShippingOutlinedIcon fontSize="large" />,
           avatarStyles: { bgcolor: "#abcfd6" },
-          text: "Free shipping up to $50",
+          text: "Free shipping",
         },
         {
           avatar: <CategoryIcon fontSize="large" />,
           avatarStyles: { bgcolor: "#B2B8A3" },
-          text: "Product well package",
+          text: "Product well packaged",
         },
         {
           avatar: <SupportAgentIcon fontSize="large" />,
           avatarStyles: { bgcolor: "#F4C7AB" },
-          text: "Support",
+          text: "24x7 Support",
         },
       ].map((content) => (
         <Grid
           key={content.text}
           item
           xs={12}
-          sm={4}
+          md={4}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -46,15 +46,10 @@ export default function HeaderBoxes() {
               width: "100px",
               ...content.avatarStyles,
             }}
-            // item
           >
             {content.avatar}
           </Avatar>
-          <Box
-            //item
-            textAlign={"center"}
-            sx={{ pt: 2 }}
-          >
+          <Box textAlign={"center"} sx={{ pt: 2 }}>
             {content.text}
           </Box>
         </Grid>
