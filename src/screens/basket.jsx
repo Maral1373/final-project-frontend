@@ -101,7 +101,11 @@ const Cart = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <Grid container sx={{ display: "flex", flexDirection: "column" }}>
+        <Grid
+          container
+          sx={{ display: "flex", flexDirection: "column" }}
+          maxWidth="xl"
+        >
           <Grid item sx={{ my: 5 }}>
             <Typography variant="h4">Your Cart</Typography>
           </Grid>
