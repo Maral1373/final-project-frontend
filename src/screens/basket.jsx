@@ -16,6 +16,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useTheme } from "@mui/material";
+import Container from "@mui/material/Container";
 
 const Cart = () => {
   const [cart, setCart] = useState({ items: [] });
@@ -97,15 +98,11 @@ const Cart = () => {
     !isLoading && cart._id !== "undefined" && cart.items.length > 0;
 
   return (
-    <>
+    <Container maxWidth="xl">
       {isLoading ? (
         <Loading />
       ) : (
-        <Grid
-          container
-          sx={{ display: "flex", flexDirection: "column" }}
-          maxWidth="xl"
-        >
+        <Grid container sx={{ display: "flex", flexDirection: "column" }}>
           <Grid item sx={{ my: 5 }}>
             <Typography variant="h4">Your Cart</Typography>
           </Grid>
@@ -259,7 +256,7 @@ const Cart = () => {
           </Grid>
         </Grid>
       )}
-    </>
+    </Container>
   );
 };
 
