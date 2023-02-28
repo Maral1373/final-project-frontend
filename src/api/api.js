@@ -94,7 +94,7 @@ export const registerUser = async ({
       phone,
     });
     if (res.data.token) {
-      setToken(res.data.token);
+      // setToken(res.data.token); don't set token, so user has to signin after registering
       return Promise.resolve();
     }
   } catch (e) {

@@ -29,7 +29,7 @@ export default function SignUp() {
         address,
         phone,
       });
-      navigate("/products");
+      navigate("/login"); //navigate("/products");
     } catch (e) {
       setText("Registration failed");
       setSeverity("error");
