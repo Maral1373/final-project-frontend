@@ -1,7 +1,7 @@
 export const API =
   process.env.NODE_ENV === "development"
     ? "http://127.0.0.1:3400/api"
-    : "https://vercel.com/maral1373s-projects/backend-8wnr/9467khDTSj2cqAmb9kBebb9G7FMX/api"; //"https://test-backend-b9qq.onrender.com/api";
+    : "https://backend-maral1373.vercel.app/api" //"https://vercel.com/maral1373s-projects/backend-8wnr/9467khDTSj2cqAmb9kBebb9G7FMX/api"; //"https://test-backend-b9qq.onrender.com/api";
 export const SITE_NAME = "Maral's mobile shop";
 
 export const PRODUCT_TAGS = {
